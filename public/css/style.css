@@ -1,0 +1,38 @@
+/* Général */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body > main {
+    padding: 1ch;
+    flex-grow: 1;
+}
+
+footer {
+    border-top: solid black 1px;
+    text-align: center;
+}
+
+/* Nav */
+nav ul {
+    display: flex;
+    flex-direction: row;
+
+    list-style: none;
+    padding: 0.5rem 2ch;
+    margin: 0;
+    gap: 2ch;
+
+    background-color: black;
+}
+
+nav a {
+    color: whitesmoke;
+    text-decoration: none;
+}
+nav a:hover {
+    /* transform: scale(1.2); */
+}
+
