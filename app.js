@@ -34,6 +34,10 @@ app.use(session({
 // - Routing
 app.use(homeRouter);
 
+// Connexion à la base de donnée MongoDB
+const connectDb = require('./models');
+connectDb();
+
 // Démarrage du Web serveur
 app.listen(PORT, () => {
     console.log(`Web server is running on ${PORT} (${NODE_ENV})`);
