@@ -9,10 +9,24 @@ const articleService = {
      */
     create: async ({ title, slug, tag, desc, content }) => {
 
+        let slugFinal = slug.toLowerCase().trim().replaceAll(/\s/g, '-');
+
+        // Check si le slug existe
+        const articleExists = await Article.findOne({
+            slug: slugFinal
+        });
+
+        // - Un article trouvé avec le slug -> Modifier le slug
+        if(articleExists) {
+            const slugSufix = nanoid(5);
+            slugFinal = slugFinal + '-' + slugSufix;
+            // TODO Idéalement, il faut recheck le slug ;)
+        }
+        
         // Création de l'article via le model de Mongoose
         const articleCreated = new Article({
             title,
-            slug,
+            slug: slugFinal,
             tag,
             desc: desc || content.slice(0, 100),
             content
