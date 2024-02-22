@@ -12,7 +12,8 @@ const homeController = {
             desc: 'Ceci est la fin de la démo 😲',
             content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam impedit hic molestias rem a architecto animi eligendi corrupti, dolorem in iure autem quisquam iste doloremque fugiat odio expedita ab commodi.'
         }
-        await articleService.create(article)
+        const data = await articleService.create(article)
+        console.log(data);
 
         res.render('home/index');
     }

@@ -35,7 +35,7 @@ const articleService = {
         // Invocation de la métohde "save" pour enregistrer en DB
         await articleCreated.save();
 
-        console.log(articleCreated);
+        return articleCreated;
     }
 
 };
