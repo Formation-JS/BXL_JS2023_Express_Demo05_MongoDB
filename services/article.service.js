@@ -36,6 +36,31 @@ const articleService = {
         await articleCreated.save();
 
         return articleCreated;
+    },
+
+    /**
+     * Permet d'ajouter un commentaire à un article
+     * @param {string} slug 
+     * @param {string} message 
+     */
+    addComment: async (slug, message) => {
+        // Récuperation de l'article ciblé par le "slug"
+        const articleTarget = await Article.findOne({ slug });
+        
+        // Stop si l'article n'existe pas 
+        if(!articleTarget) {
+            // Possibilité d'envoyé une erreur à la place (cf : Demo API)
+            return false; 
+        }
+
+        // Mise à jours de l'article
+        const articleUpdated = await Article.updateOne({ slug }, {
+            $push: {
+                comments : { message }
+            }
+        });
+
+        return !!articleUpdated; // articleUpdated !== null
     }
 
 };

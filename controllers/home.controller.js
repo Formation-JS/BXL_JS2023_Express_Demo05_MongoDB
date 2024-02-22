@@ -15,6 +15,8 @@ const homeController = {
         const data = await articleService.create(article)
         console.log(data);
 
+        await articleService.addComment(data.slug, 'Fonctioone ? 😲')
+
         res.render('home/index');
     }
 
