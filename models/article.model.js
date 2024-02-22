@@ -26,7 +26,8 @@ const articleSchema = mongoose.Schema({
         minLength: 10,
     }
 }, {
-    collection: 'Article'
+    collection: 'Article',
+    timestamps: true
 });
 
 // Créer le model de données
