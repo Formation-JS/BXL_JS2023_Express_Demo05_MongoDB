@@ -1,6 +1,28 @@
 const mongoose = require('mongoose');
 
 // Définition du schema des données
+const commentSchema = mongoose.Schema({
+    message: {
+        type: String,
+        require: true,
+        trim: true,
+        minLength: 1,
+        maxLength: 500
+    },
+    rating : {
+        type: Number,
+        require: true,
+        default: 0,
+    },
+    isVisible : {
+        type: Boolean,
+        require: true,
+        default: false,
+    }
+}, {
+    timestamps: true
+});
+
 const articleSchema = mongoose.Schema({
     title: {
         type: String,
@@ -24,7 +46,11 @@ const articleSchema = mongoose.Schema({
         require: true,
         trim: true,
         minLength: 10,
-    }
+    },
+    comments: [{
+        type: commentSchema,
+        default: []
+    }]
 }, {
     collection: 'Article',
     timestamps: true
