@@ -1,3 +1,4 @@
+const articleService = require("../services/article.service");
 const { articleValidator } = require("../validators/article.validator");
 
 const articleController = {
@@ -24,6 +25,12 @@ const articleController = {
                                 .validate(req.body, { abortEarly: false });
 
             console.log('data', data);
+
+            // Save article in DB
+            articleService.create(data);
+
+            // Redirection vers la page accueil (ou page detail)
+            res.redirect('/');
         }
         catch(error) {
             
@@ -49,7 +56,6 @@ const articleController = {
             return;
         }
         
-        res.sendStatus(501);
     },
 
 };
