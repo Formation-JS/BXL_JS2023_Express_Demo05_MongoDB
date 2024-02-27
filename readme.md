@@ -7,6 +7,7 @@
 - dotenv: Gestion du fichier .env
 - ejs: Moteur de vue « EJS »
 - morgan: Logger de requete
+- yup : Validateur de données (Formulaire)
 
 ## Structure
 ```
@@ -17,6 +18,7 @@ public      [Fichier accessible]
 routes      [Lien entre l'url et le controller]
 services    [Traitement metier (Business)]
 views       [Génération du visuel]
+validators  [Schema de validation]
  .env
  .gitignore
  app.js

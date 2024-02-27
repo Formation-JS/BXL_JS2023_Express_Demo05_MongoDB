@@ -1,33 +1,45 @@
 <%- include('../partial/_header.ejs') %>
 
+<% var error; %>
+
 <h1>Article</h1>
 <h2>Formulaire d'ajout</h2>
 
 <form class="article-form" method="post">
     <div>
         <label for="input-title">Titre</label>
-        <input id="input-title" name="title" type="text">
-        <span class="error" id="error-title">message test !</span>
+        <input id="input-title" name="title" type="text" value="<%= data['title'] %>">
+        <% if(error && error['title']) { %>
+            <span class="error" id="error-title"><%= error['title'] %></span>
+        <% } %>
     </div>
     <div>
         <label for="input-slug">Slug</label>
-        <input id="input-slug" name="slug" type="text">
-        <span class="error" id="error-slug">message test !</span>
+        <input id="input-slug" name="slug" type="text" value="<%= data['slug'] %>">
+        <% if(error && error['slug']) { %>
+            <span class="error" id="error-slug"><%= error['slug'] %></span>
+        <% } %>
     </div>
     <div>
         <label for="input-tag">Tags</label>
-        <input id="input-tag" name="tag" type="text">
-        <span class="error" id="error-tag">message test !</span>
+        <input id="input-tag" name="tag[0]" type="text" value="<%= data['tag[0]'] %>">
+        <% if(error && error['tag']) { %>
+            <span class="error" id="error-tag"><%= error['tag'] %></span>
+        <% } %>
     </div>
     <div>
         <label for="input-desc">Description</label>
-        <input id="input-desc" name="description" type="text">
-        <span class="error" id="error-desc">message test !</span>
+        <input id="input-desc" name="description" type="text" value="<%= data['description'] %>">
+        <% if(error && error['desc']) { %>
+            <span class="error" id="error-desc"><%= error['desc'] %></span>
+        <% } %>
     </div>
     <div>
         <label for="input-content">Contenu</label>
-        <textarea id="input-content" name="content"></textarea>
-        <span class="error" id="error-content">message test !</span>
+        <textarea id="input-content" name="content"><%= data['content'] %></textarea>
+        <% if(error && error['content']) { %>
+            <span class="error" id="error-content"><%= error['content'] %></span>
+        <% } %>
     </div>
     <div>
         <button type="submit">Ajouter</button>
