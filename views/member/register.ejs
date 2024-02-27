@@ -1,0 +1,30 @@
+<%- include('../partial/_header.ejs') %>
+
+<h1>S'inscrire</h1>
+<form method="POST">
+    <div>
+        <label for="input-username">Pseudo</label>
+        <input id="input-username" name="username" type="text">
+    </div>
+    <div>
+        <label for="input-firstname">Prénom</label>
+        <input id="input-firstname" name="firstname" type="text">
+    </div>
+    <div>
+        <label for="input-lastname">Nom</label>
+        <input id="input-lastname" name="lastname" type="text">
+    </div>
+    <div>
+        <label for="input-pwd">Mot de passe</label>
+        <input id="input-pwd" name="password" type="password">
+    </div>
+    <div>
+        <label for="input-confirm">Confirmation</label>
+        <input id="input-confirm" name="confirm" type="password">
+    </div>
+    <div>
+        <button type="submit">Login</button>
+    </div>
+</form>
+
+<%- include('../partial/_footer.ejs') %>

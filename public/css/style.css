@@ -20,6 +20,14 @@ footer {
 }
 
 /* Nav */
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    background-color: black;
+}
+
 nav ul {
     display: flex;
     flex-direction: row;
@@ -28,8 +36,6 @@ nav ul {
     padding: 0.5rem 2ch;
     margin: 0;
     gap: 2ch;
-
-    background-color: black;
 }
 
 nav a {
@@ -38,40 +44,40 @@ nav a {
     display: inline-block;
 }
 nav a:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
-/* Article form */
-.article-form > div:not(:last-child) {
+/* Form */
+form > div:not(:last-child) {
     margin-bottom: 0.5ch;
 }
 
-.article-form > div > label {
+form > div > label {
     font-size: 1.1em;
 }
-.article-form > div > label::after {
+form > div > label::after {
     content: ':';
     margin-left: 0.3ch;
 }
 
-.article-form > div > input, .article-form > div > textarea {
+form > div > input, form > div > textarea {
     width: 100%;
     outline: none;
     border: 1px solid black;
     border-radius: 0.2em;
     padding: 3px;
 }
-.article-form > div > input:focus, .article-form > div > textarea:focus {
+form > div > input:focus, form > div > textarea:focus {
     border-width: 2px;
     padding: 2px;
 }
 
-.article-form > div > textarea {
+form > div > textarea {
     resize: none;
     min-height: 20em;
 }
 
-.article-form .error {
+form .error {
     color: crimson;
     font-style: oblique;
 }
