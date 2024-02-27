@@ -27,7 +27,13 @@ const articleController = {
             console.log('data', data);
 
             // Save article in DB
-            articleService.create(data);
+            articleService.create({
+                title: data.title,
+                desc: data.description,
+                slug: data.slug || null,
+                tag: data.tag,
+                content: data.content
+            });
 
             // Redirection vers la page accueil (ou page detail)
             res.redirect('/');
