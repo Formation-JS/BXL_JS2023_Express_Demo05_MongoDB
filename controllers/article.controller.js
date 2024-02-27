@@ -27,7 +27,7 @@ const articleController = {
             console.log('data', data);
 
             // Save article in DB
-            articleService.create({
+            await articleService.create({
                 title: data.title,
                 desc: data.description,
                 slug: data.slug || null,
