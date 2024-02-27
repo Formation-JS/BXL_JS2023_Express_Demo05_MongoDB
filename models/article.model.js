@@ -4,19 +4,19 @@ const mongoose = require('mongoose');
 const commentSchema = mongoose.Schema({
     message: {
         type: String,
-        require: true,
+        required: true,
         trim: true,
         minLength: 1,
         maxLength: 500
     },
     rating : {
         type: Number,
-        require: true,
+        required: true,
         default: 0,
     },
     isVisible : {
         type: Boolean,
-        require: true,
+        required: true,
         default: false,
     }
 }, {
@@ -26,24 +26,24 @@ const commentSchema = mongoose.Schema({
 const articleSchema = mongoose.Schema({
     title: {
         type: String,
-        require: true,
+        required: true,
         trim: true,
         minLength: 5
     },
     slug: {
         type: String,
-        require: true,
+        required: true,
         unique: true
     },
     tag: [String],
     desc: {
         type: String,
-        require: false,
+        required: false,
         maxLength: 200
     },
     content: {
         type: String,
-        require: true,
+        required: true,
         trim: true,
         minLength: 10,
     },
