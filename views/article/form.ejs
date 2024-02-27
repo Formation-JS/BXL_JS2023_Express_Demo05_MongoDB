@@ -1,0 +1,38 @@
+<%- include('../partial/_header.ejs') %>
+
+<h1>Article</h1>
+<h2>Formulaire d'ajout</h2>
+
+<form class="article-form" method="post">
+    <div>
+        <label for="input-title">Titre</label>
+        <input id="input-title" name="title" type="text">
+        <span class="error" id="error-title">message test !</span>
+    </div>
+    <div>
+        <label for="input-slug">Slug</label>
+        <input id="input-slug" name="slug" type="text">
+        <span class="error" id="error-slug">message test !</span>
+    </div>
+    <div>
+        <label for="input-tag">Tags</label>
+        <input id="input-tag" name="tag" type="text">
+        <span class="error" id="error-tag">message test !</span>
+    </div>
+    <div>
+        <label for="input-desc">Description</label>
+        <input id="input-desc" name="description" type="text">
+        <span class="error" id="error-desc">message test !</span>
+    </div>
+    <div>
+        <label for="input-content">Contenu</label>
+        <textarea id="input-content" name="content"></textarea>
+        <span class="error" id="error-content">message test !</span>
+    </div>
+    <div>
+        <button type="submit">Ajouter</button>
+    </div>
+</form>
+
+
+<%- include('../partial/_footer.ejs') %>
