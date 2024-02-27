@@ -7,7 +7,8 @@
 - dotenv: Gestion du fichier .env
 - ejs: Moteur de vue « EJS »
 - morgan: Logger de requete
-- yup : Validateur de données (Formulaire)
+- yup: Validateur de données (Formulaire)
+- argon2: Lib de hashage
 
 ## Structure
 ```
