@@ -6,6 +6,7 @@ require('express-async-errors');
 const morgan = require('morgan');
 const session = require('express-session');
 const homeRouter = require('./routes/home.router');
+const articleRouter = require('./routes/article.router');
 
 // Récuperation des variables d'env
 const { NODE_ENV, PORT, SESSION_SECRET } = process.env;
@@ -33,6 +34,7 @@ app.use(session({
 
 // - Routing
 app.use(homeRouter);
+app.use(articleRouter);
 
 // Connexion à la base de donnée MongoDB
 const connectDb = require('./models');
