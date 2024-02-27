@@ -6,7 +6,7 @@ const articleValidator = yup.object().shape({
               .required('Le titre est obligatoire'),
     slug: yup.string()
              .optional(),
-    tag: yup.array().of(yup.string()),
+    tag: yup.array().of(yup.string()).compact((t) => t === ''),
     description: yup.string()
                     .max(200, 'La description ne peut pas faire plus de 200 caracteres 😲'),
     content: yup.string()
