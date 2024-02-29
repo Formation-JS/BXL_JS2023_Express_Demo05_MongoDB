@@ -9,7 +9,16 @@ const articleController = {
     },
 
     detail: async (req, res) => {
-        res.render('article/detail');
+        const slug = req.params.slug;
+
+        const article = await articleService.getBySlug(slug);
+
+        if(!article) {
+            res.status(404).render('article/not-found');
+            return;
+        }
+
+        res.render('article/detail', { article });
     },
 
     addNewArticle: async (req, res) => {

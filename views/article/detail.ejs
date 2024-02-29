@@ -1,7 +1,9 @@
 <%- include('../partial/_header.ejs') %>
 
-<h1>Detail de l'article</h1>
+<h1><%= article.title %></h1>
+<h2><%= article.author.firstname %> <%= article.author.lastname %></h2>
 
+<p><%= article.content %></p>
 
 
 

@@ -81,7 +81,22 @@ const articleService = {
 
         console.log(articles);
         return articles;
+    },
+
+    getBySlug: async (slug) => {
+        const article = await Article
+            .findOne(
+                { slug } // Filter
+            )
+            .populate({
+                path: 'author',
+                select: ['username', 'firstname', 'lastname']
+            })
+        
+        console.log(article);
+        return article;
     }
+
 };
 
 module.exports = articleService;
