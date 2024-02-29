@@ -12,6 +12,14 @@ const articleController = {
     },
 
     addNewArticle: async (req, res) => {
+
+        // Si on n'est pas connecté → Redirection sur la page login
+        const userId = req.session.user?.id;  // res.locals.session.user?.id;
+        if(!userId) {
+            res.redirect('/member/login');
+            return;
+        }
+
         // Donnée initial du form
         const data= {};
         // Rendu du formulaire
@@ -19,24 +27,21 @@ const articleController = {
     },
     
     addNewArticle_POST: async (req, res) => {
+
+        // Si on n'est pas connecté → Erreur !
+        const userId = req.session.user?.id;
+        if(!userId) {
+            res.sendStatus(400);
+            return;
+        }
+
+        let data;
         try {
-            const data = await articleValidator
-                                .noUnknown()
-                                .validate(req.body, { abortEarly: false });
+            data = await articleValidator
+                            .noUnknown()
+                            .validate(req.body, { abortEarly: false });
 
             console.log('data', data);
-
-            // Save article in DB
-            await articleService.create({
-                title: data.title,
-                desc: data.description,
-                slug: data.slug || null,
-                tag: data.tag,
-                content: data.content
-            });
-
-            // Redirection vers la page accueil (ou page detail)
-            res.redirect('/');
         }
         catch(error) {
             
@@ -62,6 +67,18 @@ const articleController = {
             return;
         }
         
+         // Save article in DB
+         await articleService.create({
+            title: data.title,
+            author: userId,
+            desc: data.description,
+            slug: data.slug || null,
+            tag: data.tag,
+            content: data.content
+        });
+
+        // Redirection vers la page accueil (ou page detail)
+        res.redirect('/');
     },
 
 };

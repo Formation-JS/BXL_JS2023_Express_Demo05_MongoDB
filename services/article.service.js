@@ -5,9 +5,9 @@ const articleService = {
 
     /**
      * Permet d'ajouter un article
-     * @param {{ title: string, slug: string, tag: string[], desc: string?, content: string }} article 
+     * @param {{ title: string, author: string, slug: string, tag: string[], desc: string?, content: string }} article 
      */
-    create: async ({ title, slug, tag, desc, content }) => {
+    create: async ({ title, author, slug, tag, desc, content }) => {
 
         const slugCustom = slug?.trim() || title;
         let slugFinal = slugCustom.toLowerCase().trim().replaceAll(/[^\w\d]/g, '-');
@@ -27,6 +27,7 @@ const articleService = {
         // Création de l'article via le model de Mongoose
         const articleCreated = new Article({
             title,
+            author,
             slug: slugFinal,
             tag,
             desc: desc || content.slice(0, 100),

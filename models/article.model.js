@@ -9,6 +9,11 @@ const commentSchema = mongoose.Schema({
         minLength: 1,
         maxLength: 500
     },
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Member',
+        required: true
+    },
     rating : {
         type: Number,
         required: true,
@@ -29,6 +34,11 @@ const articleSchema = mongoose.Schema({
         required: true,
         trim: true,
         minLength: 5
+    },
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Member',
+        required: true
     },
     slug: {
         type: String,
