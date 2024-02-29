@@ -1,3 +1,10 @@
+/* Variable */
+:root {
+    --primary-color: black;
+    --primary-color-bg: whitesmoke;
+    --error-color: crimson;
+}
+
 /* Général */
 * {
     box-sizing: border-box;
@@ -7,6 +14,9 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+
+    color: var(--primary-color);
+    background-color: var(--primary-color-bg);
 }
 
 body > main {
@@ -15,7 +25,8 @@ body > main {
 }
 
 footer {
-    border-top: solid black 1px;
+    background-color: color-mix(in lab, var(--primary-color-bg), black 2%);
+    border-top: solid color-mix(in lab, currentcolor, white 85%) 1px;
     text-align: center;
 }
 
@@ -25,7 +36,7 @@ nav {
     flex-direction: row;
     justify-content: space-between;
 
-    background-color: black;
+    background-color: currentcolor;
 }
 
 nav ul {
@@ -39,7 +50,7 @@ nav ul {
 }
 
 nav a {
-    color: whitesmoke;
+    color: var( --primary-color-bg);
     text-decoration: none;
     display: inline-block;
 }
@@ -63,7 +74,7 @@ form > div > label::after {
 form > div > input, form > div > textarea {
     width: 100%;
     outline: none;
-    border: 1px solid black;
+    border: 1px solid currentcolor;
     border-radius: 0.2em;
     padding: 3px;
 }
@@ -78,6 +89,45 @@ form > div > textarea {
 }
 
 form .error {
-    color: crimson;
+    color: var(--error-color);
     font-style: oblique;
+}
+
+/* Article list */
+.article-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 2ch;
+    padding-top: 1em;
+}
+
+.article-cards a {
+    color: currentColor;
+    text-decoration: none;
+}
+
+.article-card {
+    border: 0.05em solid currentcolor;
+    border-radius: 1ch;
+    padding: 0.5ch 1ch;
+    position: relative;
+}
+.article-card * {
+    margin: 0;
+}
+.article-card .title {
+    font-size: 2em;
+}
+.article-card .author {
+    font-size: 1.3em;
+    font-style: italic;
+}
+.article-card .update-date {
+    font-size: 0.9em;
+    color: color-mix(in lab, var(--primary-color) , white 40%);
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5ch 1ch;
 }
