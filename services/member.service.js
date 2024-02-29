@@ -4,8 +4,12 @@ const Member = require("../models/member.model");
 const memberService = {
 
     usernameExists: async (username) => {
-        //! TODO Finish -> Check in DB 
-        return false;
+        
+        const memberTarget = await Member.findOne({ username });
+        console.log(memberTarget);
+
+        return memberTarget !== null;
+        // return !!memberTarget;
     },
 
     register: async ({username, firstname, lastname, password}) => {

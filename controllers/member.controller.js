@@ -33,9 +33,11 @@ const memberController = {
         }
 
         // Check username is unique
-        if(true || await memberService.usernameExists(data.username)) {
-            //! TODO Redirect to register page
-            res.sendStatus(501);
+        if(await memberService.usernameExists(data.username)) {
+            res.render('member/register', { 
+                errorMessage: 'Le pseudo n\'est pas disponible 😭',
+                data: req.body
+            });
             return;
         }
 
