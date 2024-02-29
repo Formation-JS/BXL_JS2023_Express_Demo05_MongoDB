@@ -27,6 +27,10 @@ const memberService = {
         return memberCreated;
     },
 
+    login: async ({username, password}) => {
+        //! TODO Not implemented
+        return null;
+    }
 };
 
 module.exports = memberService;

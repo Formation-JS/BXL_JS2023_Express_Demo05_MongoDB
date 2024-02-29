@@ -1,10 +1,14 @@
 <%- include('../partial/_header.ejs') %>
+<% 
+var errorMessage;
+var data;
+%>
 
 <h1>Se connecter</h1>
 <form method="POST">
     <div>
         <label for="input-username">Pseudo</label>
-        <input id="input-username" name="username" type="text">
+        <input id="input-username" name="username" type="text" value="<%= data?.username %>">
     </div>
     <div>
         <label for="input-pwd">Mot de passe</label>
@@ -12,6 +16,9 @@
     </div>
     <div>
         <button type="submit">Login</button>
+        <% if(errorMessage) { %>
+            <span class="error"><%= errorMessage %></span>
+        <% } %>
     </div>
 </form>
 

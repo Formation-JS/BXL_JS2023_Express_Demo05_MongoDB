@@ -8,9 +8,24 @@ const memberController = {
     },
     
     login_POST: async (req, res) => {
-        //! TODO Ajouter un validator (→ Yup)
+        //! TODO Validation du body
+        
+        // Récuperation du Member via les credentials
+        const member = await memberService.login({});
 
-        res.sendStatus(501);
+        // Si invalide → Regeneration du formulaire
+        if(!member) {
+            res.render('member/login', {
+                errorMessage: 'Les credentials sont invalides !',
+                data: req.body
+            });
+            return;
+        }
+
+        //! TODO Créer une session
+
+        // Redirection vers la page d'accueil
+        res.redirect('/');
     },
     
     register: async (req, res) => {
