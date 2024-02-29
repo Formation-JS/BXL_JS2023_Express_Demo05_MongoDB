@@ -63,8 +63,25 @@ const articleService = {
         });
 
         return !!articleUpdated; // articleUpdated !== null
-    }
+    },
 
+    /**
+     * Permet d'obtenir la liste de tous les articles
+     */
+    getAll: async () => {
+        const articles = await Article
+            .find(
+                undefined, // Filter            
+                ['title', 'author', 'slug', 'desc', 'updatedAt'] // Projection
+            )
+            .populate({
+                path: 'author',         // Collection lié
+                select: ['username']    // Projection
+            });
+
+        console.log(articles);
+        return articles;
+    }
 };
 
 module.exports = articleService;

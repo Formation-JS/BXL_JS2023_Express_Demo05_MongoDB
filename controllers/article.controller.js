@@ -4,7 +4,8 @@ const { articleValidator } = require("../validators/article.validator");
 const articleController = {
 
     index : async (req, res) => {
-        res.render('article/index');
+        const articles = await articleService.getAll();
+        res.render('article/index', { articles });
     },
 
     detail: async (req, res) => {

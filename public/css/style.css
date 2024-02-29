@@ -121,6 +121,7 @@ form .error {
 .article-card .author {
     font-size: 1.3em;
     font-style: italic;
+    margin-bottom: 1ch;
 }
 .article-card .update-date {
     font-size: 0.9em;
