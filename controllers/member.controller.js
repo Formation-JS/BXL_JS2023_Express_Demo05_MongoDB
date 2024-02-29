@@ -1,4 +1,5 @@
 const memberService = require("../services/member.service");
+const { memberRegisterValidator } = require("../validators/member.validator");
 
 const memberController = {
 
@@ -17,11 +18,22 @@ const memberController = {
     },
     
     register_POST: async (req, res) => {
-        //! TODO Ajouter un validator (→ Yup)
-        const data = req.body;
+        // Validation du body
+        let data;
+        try {
+            data = await memberRegisterValidator.validate(req.body, { abortEarly: false });
+        }
+        catch(error) {
+            console.log(error);
+            res.render('member/register', { 
+                errorMessage: 'Les données sont invalides',
+                data: req.body
+            });
+            return;
+        }
 
         // Check username is unique
-        if(await memberService.usernameExists(data.username)) {
+        if(true || await memberService.usernameExists(data.username)) {
             //! TODO Redirect to register page
             res.sendStatus(501);
             return;

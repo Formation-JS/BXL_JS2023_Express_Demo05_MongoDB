@@ -1,18 +1,22 @@
 <%- include('../partial/_header.ejs') %>
+<%
+var errorMessage;
+var data;
+%>
 
 <h1>S'inscrire</h1>
 <form method="POST">
     <div>
         <label for="input-username">Pseudo</label>
-        <input id="input-username" name="username" type="text">
+        <input id="input-username" name="username" type="text" value="<%= data?.username %>">
     </div>
     <div>
         <label for="input-firstname">Prénom</label>
-        <input id="input-firstname" name="firstname" type="text">
+        <input id="input-firstname" name="firstname" type="text" value="<%= data?.firstname %>">
     </div>
     <div>
         <label for="input-lastname">Nom</label>
-        <input id="input-lastname" name="lastname" type="text">
+        <input id="input-lastname" name="lastname" type="text" value="<%= data?.lastname %>">
     </div>
     <div>
         <label for="input-pwd">Mot de passe</label>
@@ -24,6 +28,9 @@
     </div>
     <div>
         <button type="submit">Login</button>
+        <% if(errorMessage) { %>
+            <span class="error"><%= errorMessage %></span>
+        <% } %>
     </div>
 </form>
 
