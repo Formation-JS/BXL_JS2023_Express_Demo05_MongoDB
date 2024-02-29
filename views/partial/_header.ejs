@@ -12,10 +12,14 @@
         <ul>
             <li><a href="/">Accueil</a></li>
         </ul>
+        <% /* Utilisation de la variable "locals" pour manipuler la session */ %>
         <ul>
-            <li><a href="/member/login">Se connecter</a></li>
-            <li><a href="/member/register">S'inscrire</a></li>
-            <li><a href="/member/logout">Se déconnecter</a></li>
+            <% if(locals.session?.user) { %>
+                <li><a href="/member/logout">Se déconnecter</a></li>
+            <% } else { %>
+                <li><a href="/member/login">Se connecter</a></li>
+                <li><a href="/member/register">S'inscrire</a></li>
+            <% } %>
         </ul>
     </nav>
     <main>

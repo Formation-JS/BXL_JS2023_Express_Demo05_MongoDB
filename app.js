@@ -33,6 +33,11 @@ app.use(session({
     saveUninitialized: true,
     secret: SESSION_SECRET
 }));
+//* Injecter la session dans la variable "locals"
+app.use((req, res, next) => {
+    res.locals.session = req.session;
+    next();
+});
 
 // - Routing
 app.use(homeRouter);

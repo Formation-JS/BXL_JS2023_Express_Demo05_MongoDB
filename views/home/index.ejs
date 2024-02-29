@@ -3,5 +3,10 @@
 <h1>Page d'accueil !</h1>
 <a href="/article/new">Créer un article</a>
 
+<% /* « locals » est une variable global injecté dans la vue */ %>
+<% console.log(locals) %>
+<p>Le site tourne sur : <%= locals.settings['view engine'] %> </p>
+
+
 
 <%- include('../partial/_footer.ejs') %>
