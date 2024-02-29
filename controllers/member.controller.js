@@ -23,7 +23,7 @@ const memberController = {
         }
         
         // Récuperation du Member via les credentials
-        const member = await memberService.login({});
+        const member = await memberService.login(data);
 
         // Si invalide → Regeneration du formulaire
         if(!member) {

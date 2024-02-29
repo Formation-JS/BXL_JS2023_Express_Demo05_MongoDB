@@ -28,8 +28,18 @@ const memberService = {
     },
 
     login: async ({username, password}) => {
-        //! TODO Not implemented
-        return null;
+        
+        const member = await Member.findOne({ username });
+        if(!member) {
+            return null;
+        }
+
+        const pwdIsValid = await argon2.verify(member.password, password);
+        if(!pwdIsValid) {
+            return null;
+        }
+
+        return member;
     }
 };
 
