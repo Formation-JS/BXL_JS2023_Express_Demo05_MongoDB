@@ -33,6 +33,19 @@ const memberRegisterValidator = yup.object().shape({
 
 });
 
+const memberLoginValidator = yup.object().shape({
+
+    username: yup.string()
+        .trim()
+        .required(),
+
+    password: yup.string()
+        .trim()
+        .required()
+
+});
+
 module.exports = {
-    memberRegisterValidator
+    memberRegisterValidator,
+    memberLoginValidator
 };

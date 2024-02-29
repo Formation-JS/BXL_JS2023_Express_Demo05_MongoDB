@@ -1,5 +1,5 @@
 const memberService = require("../services/member.service");
-const { memberRegisterValidator } = require("../validators/member.validator");
+const { memberRegisterValidator, memberLoginValidator } = require("../validators/member.validator");
 
 const memberController = {
 
@@ -8,7 +8,19 @@ const memberController = {
     },
     
     login_POST: async (req, res) => {
-        //! TODO Validation du body
+        // Validation du body
+        let data;
+        try {
+            data = await memberLoginValidator.validate(req.body, { abortEarly: false });
+        }
+        catch (error) {
+            console.log(error);
+            res.render('member/login', {
+                errorMessage: 'Les credentials sont necessaire ಠ╭╮ಠ',
+                data: req.body
+            });
+            return;
+        }
         
         // Récuperation du Member via les credentials
         const member = await memberService.login({});
