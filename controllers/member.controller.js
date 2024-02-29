@@ -34,9 +34,19 @@ const memberController = {
             return;
         }
 
-        //! TODO Créer une session
+        // Initialisation de la session de l'utilisateur
+        console.log(member);
+        req.session.user = {
+            id: member._id,
+            name: member.username
+        };
 
         // Redirection vers la page d'accueil
+        res.redirect('/');
+    },
+
+    logout: async (req, res) => {
+        req.session.destroy();
         res.redirect('/');
     },
     
