@@ -101,8 +101,12 @@ const articleController = {
 
     addCommentToArticle_POST: async (req, res) => {
 
-        //! TODO Obtenir l'id du l'utilisateur (session)
-        //? TODO Si non connecté -> Redirection Login ?
+        // Récuperation de l'utilisateur connecté
+        const userId = req.session.user?.id;
+        if(!userId) {
+            res.redirect('/member/login');
+            return;
+        }
         
         // Validation des données du body
         let data;
