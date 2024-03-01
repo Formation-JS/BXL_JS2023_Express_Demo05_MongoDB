@@ -124,11 +124,16 @@ const articleController = {
             return;
         }
 
-        //! TODO Add comment into DB (-> ArticleService) 
+        // Add comment into DB
+        const commentAdded = await articleService.addComment(data.slug, data.comment, userId);
 
-        //* TODO Redirection vers la page detail
-
-        res.sendStatus(501);
+        // Redirection
+        if(commentAdded) {
+            res.redirect(`/article/detail/${req.body.slug}`);
+        }
+        else {
+            res.status(404).render('article/not-found');
+        }
     }
 };
 
