@@ -14,7 +14,15 @@ const articleValidator = yup.object().shape({
                 .required('Le contenu est obligatoire')                    
 });
 
+const articleCommentValidator = yup.object().shape({
+    comment: yup.string()
+                .max(1_000)
+                .required(),
+    slug: yup.string()
+             .required()
+});
 
 module.exports = {
-    articleValidator
+    articleValidator,
+    articleCommentValidator
 };

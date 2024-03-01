@@ -10,10 +10,11 @@
 <% /* TODO Refactor with CSS */ %>
 <form id="comment-form" method="post" action="/article/add-comment">
     <h3 aria-label="input-comment">Ajouter un commentaire :</h3>
-    <textarea id="input-comment" name="comment"></textarea>
+    <textarea id="input-comment" name="comment"><%= data.comment %></textarea>
     <br>
-    <input type="hidden" name="slug" value="<% article.slug %>">
+    <input type="hidden" name="slug" value="<%= article.slug %>">
     <button type="submit">Envoyer</button>
+    <span><%= message %></span>
 </form>
 <br>
 <div id="comment-list">

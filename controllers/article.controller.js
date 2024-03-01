@@ -1,5 +1,5 @@
 const articleService = require("../services/article.service");
-const { articleValidator } = require("../validators/article.validator");
+const { articleValidator, articleCommentValidator } = require("../validators/article.validator");
 
 const articleController = {
 
@@ -11,14 +11,22 @@ const articleController = {
     detail: async (req, res) => {
         const slug = req.params.slug;
 
+        // Récuperation de l'article en DB
         const article = await articleService.getBySlug(slug);
-
         if(!article) {
             res.status(404).render('article/not-found');
             return;
         }
 
-        res.render('article/detail', { article });
+        // Récuperation des infos temporaire depuis la session
+        const message = req.session.comment?.message;
+        const data = req.session.comment?.data ?? {} ;
+
+        // Cleanup de la session
+        req.session.comment = undefined;
+
+        // Affichage de la page detail
+        res.render('article/detail', { article, data, message });
     },
 
     addNewArticle: async (req, res) => {
@@ -96,8 +104,21 @@ const articleController = {
         //! TODO Obtenir l'id du l'utilisateur (session)
         //? TODO Si non connecté -> Redirection Login ?
         
-        //! TODO Validation des données du body
-        //? TODO Si les données sont invalides -> Message d'erreur
+        // Validation des données du body
+        let data;
+        try {
+            data = await articleCommentValidator.validate(req.body);
+        }
+        catch (error) {
+            console.log(error);
+            // Utilisation de la session pour transité les donnes
+            req.session.comment = {
+                data:  req.body,
+                message: 'Erreur lors de l\'ajout du commentaire'
+            };
+            res.redirect(`/article/detail/${req.body.slug}`);
+            return;
+        }
 
         //! TODO Add comment into DB (-> ArticleService) 
 
