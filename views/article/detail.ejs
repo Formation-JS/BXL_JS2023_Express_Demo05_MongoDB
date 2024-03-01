@@ -1,10 +1,30 @@
 <%- include('../partial/_header.ejs') %>
 
+<% /* L'article */ %>
 <h1><%= article.title %></h1>
 <h2><%= article.author.firstname %> <%= article.author.lastname %></h2>
-
 <p><%= article.content %></p>
+<hr>
 
+<% /* Commentaire de l'article */ %>
+<% /* TODO Refactor with CSS */ %>
+<form id="comment-form">
+    <h3 aria-label="input-comment">Ajouter un commentaire :</h3>
+    <textarea id="input-comment" name="comment"></textarea>
+    <br>
+    <button type="submit">Envoyer</button>
+</form>
+<br>
+<div id="comment-list">
+    <div>
+        <h4>Della Duck - 29/02/2024</h4>
+        <p>Ceci est un commentaire</p>
+    </div>
+    <div>
+        <h4>Balthazar Picsou - 01/03/2024</h4>
+        <p>Next ?</p>
+    </div>
+</div>
 
 
 <%- include('../partial/_footer.ejs') %>
