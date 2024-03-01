@@ -18,14 +18,12 @@
 </form>
 <br>
 <div id="comment-list">
-    <div>
-        <h4>Della Duck - 29/02/2024</h4>
-        <p>Ceci est un commentaire</p>
-    </div>
-    <div>
-        <h4>Balthazar Picsou - 01/03/2024</h4>
-        <p>Next ?</p>
-    </div>
+    <% for(const comment of article.comments) { %>
+        <div>
+            <h4><%= comment.author.firstname + ' ' + comment.author.lastname %> - <%= comment.createdAt.toLocaleString('fr') %></h4>
+            <p><%= comment.message %></p>
+        </div>
+    <% } %>
 </div>
 
 
