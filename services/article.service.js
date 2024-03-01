@@ -44,8 +44,10 @@ const articleService = {
      * Permet d'ajouter un commentaire à un article
      * @param {string} slug 
      * @param {string} message 
+     * @param {string} authorId 
+     * @returns {boolean} updateSuccess
      */
-    addComment: async (slug, message) => {
+    addComment: async (slug, message, authorId) => {
         // Récuperation de l'article ciblé par le "slug"
         const articleTarget = await Article.findOne({ slug });
         
@@ -58,7 +60,7 @@ const articleService = {
         // Mise à jours de l'article
         const articleUpdated = await Article.updateOne({ slug }, {
             $push: {
-                comments : { message }
+                comments : { message, author: authorId }
             }
         });
 
