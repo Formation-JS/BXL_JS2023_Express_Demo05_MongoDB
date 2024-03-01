@@ -91,6 +91,20 @@ const articleController = {
         res.redirect('/');
     },
 
+    addCommentToArticle_POST: async (req, res) => {
+
+        //! TODO Obtenir l'id du l'utilisateur (session)
+        //? TODO Si non connecté -> Redirection Login ?
+        
+        //! TODO Validation des données du body
+        //? TODO Si les données sont invalides -> Message d'erreur
+
+        //! TODO Add comment into DB (-> ArticleService) 
+
+        //* TODO Redirection vers la page detail
+
+        res.sendStatus(501);
+    }
 };
 
 module.exports = articleController;

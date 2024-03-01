@@ -8,10 +8,11 @@
 
 <% /* Commentaire de l'article */ %>
 <% /* TODO Refactor with CSS */ %>
-<form id="comment-form">
+<form id="comment-form" method="post" action="/article/add-comment">
     <h3 aria-label="input-comment">Ajouter un commentaire :</h3>
     <textarea id="input-comment" name="comment"></textarea>
     <br>
+    <input type="hidden" name="slug" value="<% article.slug %>">
     <button type="submit">Envoyer</button>
 </form>
 <br>
