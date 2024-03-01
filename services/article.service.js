@@ -94,6 +94,17 @@ const articleService = {
                 path: 'author',
                 select: ['username', 'firstname', 'lastname']
             })
+            .populate({
+                path: 'comments.author',
+                select: ['username', 'firstname', 'lastname']
+            })
+            // .populate({
+            //     path: 'comments',
+            //     populate: {
+            //         path: 'author',
+            //         select: ['username', 'firstname', 'lastname']
+            //     }
+            // })
         
         console.log(article);
         return article;
